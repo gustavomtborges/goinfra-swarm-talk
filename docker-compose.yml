@@ -1,0 +1,24 @@
+version: '3.5'
+services:
+  db:
+    image: "postgres:9.6"
+    environment:
+      - POSTGRES_USER=beers
+      - POSTGRES_PASSWORD=dba@beers
+      - POSTGRES_DB=beers
+    networks:
+      - api
+
+  app:
+    image: "gustavomtborges/beers-api:latest"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    ports:
+      - "8080:8080"
+    networks:
+      - api
+    depends_on:
+      - db
+
+networks:
+  api:

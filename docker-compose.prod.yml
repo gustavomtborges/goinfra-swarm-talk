@@ -1,0 +1,56 @@
+version: '3.5'
+services:
+  proxy:
+    image: traefik
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+      - type: bind
+        source: ./traefik/traefik.toml
+        target: /traefik.toml
+      - type: bind
+        source: ./traefik/acme.json
+        target: /acme.json
+    networks:
+      - webapp
+
+  db:
+    image: "postgres:9.6"
+    environment:
+      - POSTGRES_USER=beers
+      - POSTGRES_PASSWORD=dba@beers
+      - POSTGRES_DB=beers
+    networks:
+      - webapp
+
+  app:
+    image: "gustavomtborges/beers-api:latest"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    deploy:
+      mode: replicated
+      replicas: 2
+      labels:
+        - "traefik.enable=true"
+        - "traefik.frontend.rule=Host:api.gustavoborges.net"
+        - "traefik.docker.network=webapp"
+        - "traefik.port=8080"
+    ports:
+      - "8080"
+    networks:
+      - webapp
+    depends_on:
+      - db
+
+networks:
+ webapp:
+   external: true
