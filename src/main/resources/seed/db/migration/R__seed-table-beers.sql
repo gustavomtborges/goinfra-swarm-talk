@@ -1,0 +1,5 @@
+INSERT INTO tbl_beers(name, description, country) VALUES ('Novo Brazil Cookie Muncher', 'Chocolaty brown in colour. Big bubbles and a low brown head. Oxidized dark fruits on the nose. Sweet with a hint of tawny port. Sweet and fruity palate. Jammy flavours with port notes. A very full, sweet finish, lingering with a balanced bitterness', 'United States');
+INSERT INTO tbl_beers(name, description, country) VALUES ('Surtur', '', 'Iceland');
+INSERT INTO tbl_beers(name, description, country) VALUES ('Bauhöfer Ulmer Pilsener', 'Decent peppery hop nose. Quite bitter but balanced with some sweetness. The finish as well is bitter but good for a German Pils.', 'Germany');
+INSERT INTO tbl_beers(name, description, country) VALUES ('Camerons Where the Buffalo Roam Barleywine', '', 'Canada');
+INSERT INTO tbl_beers(name, description, country) VALUES ('Rügener Insel-Brauerei Seepferd', 'Lovely nose of dry white wine, a little muscat. Fresh aromas on the palate, wild sourness, tropical citrus aromas with a well balanced sourness. Nice medium finish.', 'Germany');

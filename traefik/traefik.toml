@@ -27,7 +27,6 @@ entryPoint = "http"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "api.gustavoborges.net"
 watch = true
 swarmmode = true
 exposedbydefault = false

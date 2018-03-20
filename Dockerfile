@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-LABEL maintainer="gmartins@asert.com.br"
+LABEL maintainer="gustavo.mtborges@gmail.com"
 
 ADD target/beers-api.jar app.jar
 
