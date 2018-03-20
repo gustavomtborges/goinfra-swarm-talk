@@ -38,7 +38,7 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
       labels:
         - "traefik.enable=true"
         - "traefik.frontend.rule=Host:api.gustavoborges.net"
